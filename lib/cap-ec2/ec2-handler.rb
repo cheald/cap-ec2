@@ -52,7 +52,8 @@ module CapEC2
     end
 
     def application
-      Capistrano::Configuration.env.fetch(:application).to_s
+      (Capistrano::Configuration.env.fetch(:ec2_project_name) ||
+        Capistrano::Configuration.env.fetch(:application)).to_s
     end
 
     def tag(tag_name)
